@@ -43,7 +43,6 @@ Spork.prefork do
   # instead of editing this one. Cucumber will automatically load all features/**/*.rb
   # files.
 
-  ENV["RAILS_ENV"] ||= 'test'
   require 'cucumber/rails'
 
   # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
@@ -89,12 +88,16 @@ Spork.prefork do
   #   end
   #
 
+  require "rails/application"
+  Spork.trap_method(Rails::Application, :reload_routes!)
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
   load "#{Rails.root}/config/routes.rb"
   Dir["#{Rails.root}/app/**/*.rb"].each { |f| load f }
+  #require 'factory_girl_rails'
 end
 
 

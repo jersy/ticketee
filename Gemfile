@@ -44,6 +44,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'spork', '~> 0.9.0.rc'
+  gem 'factory_girl'
 end
 
 
