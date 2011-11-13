@@ -16,7 +16,7 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails','1.0.17'
 
 gem 'dynamic_form'
 
@@ -47,5 +47,8 @@ group :test do
   gem 'factory_girl'
 end
 
+gem 'devise', '~> 1.4.3'
+
+gem 'email_spec'
 
 gem 'minitest', '~> 2.8'
